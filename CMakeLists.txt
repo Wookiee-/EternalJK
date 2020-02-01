@@ -193,9 +193,9 @@ if(MSVC)
 	set(SharedDefines ${SharedDefines} "_SCL_SECURE_NO_WARNINGS")
 	set(SharedDefines ${SharedDefines} "_CRT_NONSTDC_NO_DEPRECATE")
 
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /EHsc /arch:SSE2")
+#	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /EHsc /arch:SSE2")
 
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /arch:SSE2")
+#	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /arch:SSE2")
 	
 	# Configure MSVC Runtime
 	include(MSVCRuntime)
@@ -231,8 +231,8 @@ elseif (("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_C_COMPILER_ID}" M
 #		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2")
 	endif()
 
-	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")
-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+#	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")
+#	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
 
 	# enable somewhat modern C++
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -245,13 +245,9 @@ elseif (("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_C_COMPILER_ID}" M
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-comment")
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsigned-char")
 		if (X86)
-			# "x86 vm will crash without -mstackrealign since MMX
-			# instructions will be used no matter what and they
-			# corrupt the frame pointer in VM calls"
-			# -ioquake3 Makefile
-#                        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mstackrealign")
+                        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mno-mmx")
+#                       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse")
 #                        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mfpmath=387")
-#                        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 		endif()
 
 		if(WIN32)
@@ -272,9 +268,9 @@ elseif (("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_C_COMPILER_ID}" M
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-comment")
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsigned-char")
 		if (X86)
-#                        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mstackrealign")
+                        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mno-mmx")
+#                      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse")
 #                        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfpmath=387")
-#                        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 		endif()
 	elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
