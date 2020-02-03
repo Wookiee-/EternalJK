@@ -245,8 +245,10 @@ elseif (("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_C_COMPILER_ID}" M
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-comment")
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsigned-char")
 		if (X86)
-                        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mstackrealign")
-                        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mfpmath=387")
+#                        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mstackrealign")
+#                        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mfpmath=387")
+                         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pipe")
+
 		endif()
 
 		if(WIN32)
@@ -267,8 +269,10 @@ elseif (("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_C_COMPILER_ID}" M
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-comment")
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsigned-char")
 		if (X86)
-                        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mstackrealign")
-                        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfpmath=387")
+#                        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mstackrealign")
+#                        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfpmath=387")
+                         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe")
+
 		endif()
 	elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
